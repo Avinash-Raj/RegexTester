@@ -34,11 +34,11 @@
                           ng-model="input_data"
                           ng-model-options="{ getterSetter: true }"></textarea>
             </div>
-            <div class="form-control">
+            <div class="form-group">
                 <div ng-repeat="(key, value) in do_parsing.data()">
                     <div>
-                        <span class="kv">index: <pre class="num">{{ key }}</pre></span><span class="kv">value: <pre
-                            class="num">{{ value }}</pre></span></li>
+                        <div  class="kv col-lg-1">index: <pre class="num">{{ key }}</pre></div><span class="kv">value: <pre
+                            class="num">{{ value }}</pre></span>
                     </div>
                 </div>
 
