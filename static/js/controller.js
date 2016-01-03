@@ -15,11 +15,20 @@ app.controller('MainCtrl', function ($scope) {
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
-                var match = new RegExp(re, mod).exec(data);
                 var dict = {};
-                while (match != null || match != undefined) {
-                    dict[match.index] = match[0]
+                var regex = new RegExp(re, mod);
+                if(mod.indexOf('g') === -1) {
+                    var m = regex.exec(data);
+                    dict[m.index] = m[0]
+                } else {
+                    while (match = regex.exec(data)) {
+                        if (!match) {
+                            break;
+                        }
+                        dict[match.index] = match[0];
+                    }
                 }
+                return dict;
 
             }
 

@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-lg-2">
                     <input type="text" name="modifier" class="form-control" placeholder="modifier"
-                            ng-model="modifier"
+                           ng-model="modifier"
                            ng-model-options="{ getterSetter: true }">
                 </div>
 
@@ -31,13 +31,17 @@
             <div class="form-group">
                 <textarea class="form-control" id="input_data" rows="10" style="width: 555px; height: 214px"
                           placeholder="Insert your test string here"
-                        ng-model="input_data"
-                           ng-model-options="{ getterSetter: true }"></textarea>
+                          ng-model="input_data"
+                          ng-model-options="{ getterSetter: true }"></textarea>
             </div>
-            <div class="form-group">
-               <div> ng-repeat="(key, value) in myObj">
-                <pre> <span ng-bind="do_parsing.data()"></span></pre>
-                   </div>
+            <div class="form-control">
+                <div ng-repeat="(key, value) in do_parsing.data()">
+                    <div>
+                        <span class="kv">index: <pre class="num">{{ key }}</pre></span><span class="kv">value: <pre
+                            class="num">{{ value }}</pre></span></li>
+                    </div>
+                </div>
+
             </div>
         </div>
         {% endverbatim %}
