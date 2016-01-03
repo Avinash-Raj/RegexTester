@@ -1,0 +1,28 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.box-design {
+   display: inline-block;
+   background-color: #f0ad4e;
+   border: 1px solid #000;
+   border-radius: 6px;
+   box-shadow: 1px 2px 5px #286090;
+   padding: 1px 10px;
+}
+
+
+#footer, .adjust{
+margin-left:10px
+}
+
+
+
+
+
+
+
+
+
