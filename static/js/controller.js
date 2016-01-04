@@ -11,12 +11,13 @@ app.controller('MainCtrl', function ($scope) {
     $scope.do_parsing = {
         data: function () {
             if ($scope.input_regex != '' && $scope.input_data != '') {
-                //return $scope.input_regex + ' | ' + $scope.input_data;
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
                 var dict = {};
-                var regex = new RegExp(re, mod);
+                try {
+                    var regex = new RegExp(re, mod);
+
                 if(mod.indexOf('g') === -1) {
                     var m = regex.exec(data);
                     dict[m.index] = m[0]
@@ -29,6 +30,9 @@ app.controller('MainCtrl', function ($scope) {
                     }
                 }
                 return dict;
+            }catch(e) {
+                	return {'0': e.message};
+                }
 
             }
 
