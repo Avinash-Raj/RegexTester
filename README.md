@@ -7,8 +7,9 @@ RegexTester is an online Regular Expression tester. Currenty it supports Javascr
 * Server-side language
     * [Python](http://www.python.org)
     * [Pip](http://www.pip-installer.org)
+
     * Web Framework used
-        * Django[https://www.djangoproject.com/]
+        * [Django](https://www.djangoproject.com/)
 
 * Client-side language
     * [AngularJS](https://angularjs.org/)
