@@ -8,6 +8,9 @@ RegexTester is an online Regular Expression tester. Currenty it supports Javascr
     * [Python](http://www.python.org)
     * [Pip](http://www.pip-installer.org)
 
+* Client-side language
+    * [AngularJS](https://angularjs.org/)
+
 **Installation Instructions**
 
 1. Clone the project.
