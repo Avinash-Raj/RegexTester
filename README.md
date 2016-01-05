@@ -15,7 +15,7 @@ RegexTester is an online Regular Expression tester. Currenty it supports Javascr
 
 1. Clone the project.
 
-2. Create a new virtual environment using `virtualenv_wrapper` tool. `mkvirtualenv tweeter`
+2. Create a new virtual environment using `virtualenv_wrapper` tool. `mkvirtualenv regex`
 
 3. `cd` intro the project directory, and install dependencies from requirements.txt via `pip install -r requirements.txt`
 
