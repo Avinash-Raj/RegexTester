@@ -14,7 +14,8 @@ $resourceProvider.defaults.stripTrailingSlashes = false;
 angular.module('regex_tester', [
     'ui.router',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'services'
 ]).config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{$');
     $interpolateProvider.endSymbol('$}');
