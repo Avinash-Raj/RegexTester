@@ -4,7 +4,7 @@
 
 var app = angular.module('regex_tester', []);
 
-app.controller('MainCtrl', function ($scope, $Link) {
+app.controller('MainCtrl', function($scope) {
     $scope.input_regex = '';
     $scope.input_data = '';
     $scope.modifier = '';
@@ -40,15 +40,15 @@ app.controller('MainCtrl', function ($scope, $Link) {
         }
     };
 
-   Tweet.query(function(response) {
-    $scope.tweets = response;
-  });
-
-  $scope.submitLink = function(input_regex,modifier,input_data) {
-    var tweet = new Tweet({text: text});
-    tweet.$save(function(){
-      $scope.tweets.unshift(tweet);
-    })
-  };
+//   Link.query(function(response) {
+//    $scope.tweets = response;
+//  });
+//
+//  $scope.submitLink = function(input_regex,modifier,input_data) {
+//    var link = new Link({regex: input_regex, modifier: modifier, data: input_data});
+//    link.$save(function(){
+//      $scope.links.unshift(link);
+//    })
+//  };
 
 });

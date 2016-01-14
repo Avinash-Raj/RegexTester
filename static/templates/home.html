@@ -15,13 +15,13 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <input type="text" name="regex" class="form-control" placeholder="Regex"
+                <input type="text" name="regex" id="regex" class="form-control" placeholder="Regex"
                        ng-model="input_regex"
                        ng-model-options="{ getterSetter: true }">
 
             </div>
             <div class="col-lg-2">
-                <input type="text" name="modifier" class="form-control" placeholder="modifier"
+                <input type="text" name="modifier" id="mod" class="form-control" placeholder="modifier"
                        ng-model="modifier"
                        ng-model-options="{ getterSetter: true }">
             </div>
@@ -35,13 +35,13 @@
                           ng-model-options="{ getterSetter: true }"></textarea>
 
             <div class="btn-group">
-                <button type="button" class="btn btn-success"  id="tweet" ng-click="submitLink(input_regex,modifier,input_data)">Save
+                <button type="button" class="btn btn-success"  id="link" ng-click="submitLink(input_regex,modifier,input_data)">Save
                 </button>
 
             </div>
 
         </div>
-        <div class="form-group">
+        <div class="form-group" id="repeat">
             <div ng-repeat="(key, value) in do_parsing.data()">
                 <div>
                     <div class="match">Match {{ $index+1 }}</div>
