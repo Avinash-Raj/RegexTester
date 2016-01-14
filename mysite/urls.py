@@ -29,7 +29,6 @@ router.register(r'links', views.LinkViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', DefaultRouter.urls, name='rest_framework'),
     url(r'^$', HomeView.as_view(), name='home')
 ]
 

@@ -4,10 +4,11 @@
 
 var app = angular.module('regex_tester', []);
 
-app.controller('MainCtrl', function ($scope) {
+app.controller('MainCtrl', function ($scope, $Link) {
     $scope.input_regex = '';
     $scope.input_data = '';
     $scope.modifier = '';
+    $scope.links = {};
     $scope.do_parsing = {
         data: function () {
             if ($scope.input_regex != '' && $scope.input_data != '') {
@@ -38,4 +39,16 @@ app.controller('MainCtrl', function ($scope) {
 
         }
     };
+
+   Tweet.query(function(response) {
+    $scope.tweets = response;
+  });
+
+  $scope.submitLink = function(input_regex,modifier,input_data) {
+    var tweet = new Tweet({text: text});
+    tweet.$save(function(){
+      $scope.tweets.unshift(tweet);
+    })
+  };
+
 });

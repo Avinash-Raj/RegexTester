@@ -17,8 +17,8 @@ angular.module('regex_tester', [
     'ngRoute',
     'services'
 ]).config(function ($interpolateProvider) {
-    $interpolateProvider.startSymbol('{$');
-    $interpolateProvider.endSymbol('$}');
+    $interpolateProvider.startSymbol('{[');
+    $interpolateProvider.endSymbol('}]);
 });
     /*.config(function ($httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider) {
         // Force angular to use square brackets for template tag

@@ -3,5 +3,5 @@
 
 angular.module('services', ['ngResource'])
   .factory('Link', function($resource) {
-    return $resource('/api/links/:id/');
+    return $resource('/links/:id/');
   });

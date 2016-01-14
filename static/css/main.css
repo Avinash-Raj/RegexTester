@@ -29,6 +29,11 @@ margin-left:10px
    color: #9d11b6;
 }
 
+.btn-success {
+  color: #FFF;
+  background-color: #5CB85C;
+  border-color: #4CAE4C;
+}
 
 
 

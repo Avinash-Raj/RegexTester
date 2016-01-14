@@ -1,12 +1,11 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 
 from link.models import Link
 
 
 class LinkSerializer(serializers.ModelSerializer):
-    user = serializers.Field(source='user')
+    pk = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Link
-        fields = ('input_regex', 'regex_modifiers', 'input_data', 'output', 'link')
+        fields = ('pk', 'input_regex', 'regex_modifiers', 'input_data', 'output', 'link')
