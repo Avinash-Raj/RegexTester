@@ -15,19 +15,23 @@ function appendNewTweet(tweet) {
 
   $('#repeat').prepend(newTweet);
 }
-
-$('#link').click(function() {
+$(document).ready(function() {
+$('#linkbtn').click(function() {
+if($('#regex').val() !== null) {
   $.ajax({
     type: "POST",
     url: "/links",
     contentType: 'application/json',
     data: JSON.stringify({"input_regex": $('#regex').val(), "regex_modifiers": $('#mod').val(),
-    "input_data": $('#input_data').val(), "output":"", "link":""}),
+    "input_data": $('#data').val(), "output":"", "link":""}),
     success: function(data) {
+      alert(data);
       //appendNewTweet(data);
       $('#regex').val('');
       $('#mod').val('');
       $('#input_data').val('');
     }
   })
+  }
+});
 });
