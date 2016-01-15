@@ -16,14 +16,32 @@ function appendNewTweet(tweet) {
   $('#repeat').prepend(newTweet);
 }
 $(document).ready(function() {
+
+//function getCookie(name) {
+//    var cookieValue = null;
+//    if (document.cookie && document.cookie != '') {
+//        var cookies = document.cookie.split(';');
+//        for (var i = 0; i < cookies.length; i++) {
+//            var cookie = jQuery.trim(cookies[i]);
+//            // Does this cookie string begin with the name we want?
+//            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+//                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                break;
+//            }
+//        }
+//    }
+//    return cookieValue;
+//}
+//var csrftoken = getCookie('csrftoken');
+
 $('#linkbtn').click(function() {
 if($('#regex').val() !== null) {
   $.ajax({
     type: "POST",
-    url: "/links",
+    url: "/links/",
     contentType: 'application/json',
     data: JSON.stringify({"input_regex": $('#regex').val(), "regex_modifiers": $('#mod').val(),
-    "input_data": $('#data').val(), "output":"", "link":""}),
+    "input_data": $('#data').val(), "output":"", "link":"www.foo.com/1"}),
     success: function(data) {
       alert(data);
       //appendNewTweet(data);
@@ -35,3 +53,4 @@ if($('#regex').val() !== null) {
   }
 });
 });
+
