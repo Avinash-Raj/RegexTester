@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Regex Tester{% endblock %}
 
 {% block description %}This page is an awesome home page.{% endblock %}
 
@@ -10,6 +10,14 @@
 <div class="jumbotron">
     {% verbatim %}
     <div class="container" ng-controller="MainCtrl">
+
+        <div class="btn-group btn-toggle" data-toggle="buttons-checkbox">
+                <button type="button" class="btn btn-primary active" id="js" data-toggle="button">Javascript
+                </button>
+            <button type="button" class="btn btn-default" id="py" data-toggle="button">Python
+                </button>
+
+            </div>
         <h2>Live Regex</h2>
 
 
@@ -25,6 +33,9 @@
                        ng-model="modifier"
                        ng-model-options="{ getterSetter: true }">
             </div>
+            <input type="text" name="lang" class="form-control" id="alignment" value="Javascript"
+                   ng-model="langu"
+                       ng-model-options="{ getterSetter: true }">
 
         </div>
         <hr>

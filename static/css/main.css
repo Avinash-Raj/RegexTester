@@ -35,5 +35,12 @@ margin-left:10px
   border-color: #4CAE4C;
 }
 
+#js {
+    background: #9b59b6;
+    border-color: #9b59b6;
+}
 
-
+#py {
+    background: #1abc9c;
+    border-color: #1abc9c;
+}

@@ -8,14 +8,19 @@ app.controller('MainCtrl', function($scope) {
     $scope.input_regex = '';
     $scope.input_data = '';
     $scope.modifier = '';
+    $scope.langu = 'Javascript';
     $scope.links = {};
     $scope.do_parsing = {
         data: function () {
-            if ($scope.input_regex != '' && $scope.input_data != '') {
+            if ($scope.input_regex != '' && $scope.input_data != '' && $scope.langu != '' && $scope.langu != undefined) {
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
+                //var lang = $("#alignment").val();
+                var lang = 'Python';
+                //alert(lang);
                 var dict = {};
+                if (lang === 'Javascript') {
                 try {
                     var regex = new RegExp(re, mod);
 
@@ -35,6 +40,11 @@ app.controller('MainCtrl', function($scope) {
                 	return {'0': e.message};
                 }
 
+            }else if (lang === 'Python'){
+
+              alert('Lang choosen is python');
+
+            }
             }
 
         }
