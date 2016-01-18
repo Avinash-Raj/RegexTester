@@ -42,7 +42,15 @@ app.controller('MainCtrl', function($scope) {
 
             }else if (lang === 'Python'){
 
-              alert('Lang choosen is python');
+                 $.ajax({
+                            type: "POST",
+                            url: "/test/",
+                            data: {"regex":re, "data":data, "mod":mod},
+           success: function(data) {
+            $( ".test" ).remove();
+            $('#repeat').after(data);
+            }
+});
 
             }
             }

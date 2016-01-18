@@ -16,7 +16,6 @@ function appendNewTweet(tweet) {
   $('#repeat').prepend(newTweet);
 }
 $(document).ready(function() {
-alert("AT tghe strat " + $("#alignment").val());
 //function getCookie(name) {
 //    var cookieValue = null;
 //    if (document.cookie && document.cookie != '') {
@@ -43,8 +42,6 @@ if($('#regex').val() !== null) {
     data: JSON.stringify({"input_regex": $('#regex').val(), "regex_modifiers": $('#mod').val(),
     "input_data": $('#data').val(), "output":"", "link":"www.foo.com/1"}),
     success: function(data) {
-      alert(data);
-      //appendNewTweet(data);
       $('#regex').val('');
       $('#mod').val('');
       $('#input_data').val('');

@@ -17,7 +17,7 @@ Including another URLconf
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from django.contrib import admin
-from link.views import HomeView
+from link.views import HomeView, TestView
 from link import views
 import rest_framework
 
@@ -29,6 +29,7 @@ router.register(r'links', views.LinkViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^test/', TestView.as_view(), name='test'),
     url(r'^$', HomeView.as_view(), name='home')
 ]
 
