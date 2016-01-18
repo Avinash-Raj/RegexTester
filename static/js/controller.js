@@ -4,17 +4,23 @@
 
 var app = angular.module('regex_tester', []);
 
-app.controller('MainCtrl', function ($scope) {
+app.controller('MainCtrl', function($scope) {
     $scope.input_regex = '';
     $scope.input_data = '';
     $scope.modifier = '';
+    $scope.langu = 'Javascript';
+    $scope.links = {};
     $scope.do_parsing = {
         data: function () {
-            if ($scope.input_regex != '' && $scope.input_data != '') {
+            if ($scope.input_regex != '' && $scope.input_data != '' && $scope.langu != '' && $scope.langu != undefined) {
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
+                //var lang = $("#alignment").val();
+                var lang = 'Python';
+                //alert(lang);
                 var dict = {};
+                if (lang === 'Javascript') {
                 try {
                     var regex = new RegExp(re, mod);
 
@@ -34,8 +40,33 @@ app.controller('MainCtrl', function ($scope) {
                 	return {'0': e.message};
                 }
 
+            }else if (lang === 'Python'){
+
+                 $.ajax({
+                            type: "POST",
+                            url: "/test/",
+                            data: {"regex":re, "data":data, "mod":mod},
+           success: function(data) {
+            $( ".test" ).remove();
+            $('#repeat').after(data);
+            }
+});
+
+            }
             }
 
         }
     };
+
+//   Link.query(function(response) {
+//    $scope.tweets = response;
+//  });
+//
+//  $scope.submitLink = function(input_regex,modifier,input_data) {
+//    var link = new Link({regex: input_regex, modifier: modifier, data: input_data});
+//    link.$save(function(){
+//      $scope.links.unshift(link);
+//    })
+//  };
+
 });

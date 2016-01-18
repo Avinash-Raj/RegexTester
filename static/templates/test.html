@@ -1,0 +1,12 @@
+
+{% if items %}
+<div class="test form-group">
+    {% if type == 'list' %}
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    {% else %}
+        {{ items }}
+    {% endif %}
+</div>
+{% endif %}
