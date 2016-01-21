@@ -16,11 +16,12 @@ app.controller('MainCtrl', function($scope) {
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
-                //var lang = $("#alignment").val();
-                var lang = 'Python';
+                var lang = $scope.langu;
+                //var lang = 'Python';
                 //alert(lang);
                 var dict = {};
                 if (lang === 'Javascript') {
+                    $( ".test" ).remove();
                 try {
                     var regex = new RegExp(re, mod);
 

@@ -1,6 +1,6 @@
 
 {% if items %}
-<div class="test form-group">
+<div class="test form-group" ng-show="langu=='Python'">
     {% if type == 'list' %}
         {% for item in items %}
             <li>{{ item }}</li>

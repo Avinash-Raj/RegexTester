@@ -12,9 +12,9 @@
     <div class="container" ng-controller="MainCtrl">
 
         <div class="btn-group btn-toggle" data-toggle="buttons-checkbox">
-                <button type="button" class="btn btn-primary active" id="js" data-toggle="button">Javascript
+                <button type="button" class="btn btn-primary active" id="js" ng-click="langu='Javascript';do_parsing.data()" data-toggle="button">Javascript
                 </button>
-            <button type="button" class="btn btn-default" id="py" data-toggle="button">Python
+            <button type="button" class="btn btn-default" id="py" data-toggle="button" ng-click="langu='Python';do_parsing.data()">Python
                 </button>
 
             </div>
@@ -33,13 +33,12 @@
                        ng-model="modifier"
                        ng-model-options="{ getterSetter: true }">
             </div>
-            <input type="text" name="lang" class="form-control" id="alignment" value="Javascript"
-                   ng-model="langu"
-                       ng-model-options="{ getterSetter: true }">
+
 
         </div>
         <hr>
-        <div class="form-group">
+        <div class="row">
+        <div class="form-group col-xs-6">
                 <textarea class="form-control" id="data" rows="10" style="width: 555px; height: 214px"
                           placeholder="Insert your test string here"
                           ng-model="input_data"
@@ -52,17 +51,18 @@
             </div>
 
         </div>
-        <div class="form-group" id="repeat">
+        <div class="form-group col-xs-6" id="repeat" ng-show="langu=='Javascript'">
             <div ng-repeat="(key, value) in do_parsing.data()">
                 <div>
                     <div class="match">Match {{ $index+1 }}</div>
-                    <div class="kv col-lg-1">index:
+                    <div class="kv col-lg-2">index:
                         <pre class="num">{{ key }}</pre>
                     </div><span class="kv">value: <pre
                         class="num">{{ value }}</pre></span>
                 </div>
             </div>
             {% endverbatim %}
+        </div>
         </div>
     </div>
 

@@ -61,10 +61,10 @@ $('.btn-toggle').click(function() {
 
 });
 
-$(".btn-toggle > .btn").click(function() {
-    // whenever a button is clicked, set the hidden helper
-    $("#alignment").val($(this).text());
-});
+// $(".btn-toggle > .btn").click(function() {
+//     // whenever a button is clicked, set the hidden helper
+//     $("#alignment").val($(this).text());
+// });
 
 });
 
