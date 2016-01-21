@@ -1,12 +1,14 @@
 
 {% if items %}
-<div class="test form-group" ng-show="langu=='Python'">
+<div class="test form-group col-xs-6" ng-show="langu=='Python'">
     {% if type == 'list' %}
         {% for item in items %}
-            <li>{{ item }}</li>
+            </div><span class="kv">value: <pre
+                        class="num">{{ item }}</pre></span>
         {% endfor %}
     {% else %}
-        {{ items }}
+        </div><span class="kv">value: <pre
+                        class="num">{{ items }}</pre></span>
     {% endif %}
 </div>
 {% endif %}

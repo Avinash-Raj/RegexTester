@@ -21,7 +21,6 @@ app.controller('MainCtrl', function($scope) {
                 //alert(lang);
                 var dict = {};
                 if (lang === 'Javascript') {
-                    $( ".test" ).remove();
                 try {
                     var regex = new RegExp(re, mod);
 
@@ -48,8 +47,8 @@ app.controller('MainCtrl', function($scope) {
                             url: "/test/",
                             data: {"regex":re, "data":data, "mod":mod},
            success: function(data) {
-            $( ".test" ).remove();
-            $('#repeat').after(data);
+            //$( ".test" ).remove();
+            $('#repeatPython').html(data);
             }
 });
 
