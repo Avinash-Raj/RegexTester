@@ -39,7 +39,7 @@
         <hr>
         <div class="row">
         <div class="form-group col-xs-6">
-                <textarea class="form-control" id="data" rows="10" style="width: 555px; height: 214px"
+                <textarea class="form-control txt-input" id="data" rows="10" style="width: 555px; height: 214px"
                           placeholder="Insert your test string here"
                           ng-model="input_data"
                           ng-model-options="{ getterSetter: true }"></textarea>
@@ -51,7 +51,7 @@
             </div>
 
         </div>
-        <div class="form-group col-xs-6" id="repeat" ng-show="langu=='Javascript'">
+        <div class="form-group col-xs-6 repeat" id="repeat" ng-show="langu=='Javascript'">
             <div ng-repeat="(key, value) in do_parsing.data()">
                 <div>
                     <div class="match">Match {{ $index+1 }}</div>

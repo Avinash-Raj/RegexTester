@@ -44,3 +44,7 @@ margin-left:10px
     background: #1abc9c;
     border-color: #1abc9c;
 }
+.repeat {
+height: 218px;
+overflow-y: scroll;
+}

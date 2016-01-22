@@ -12,6 +12,10 @@ app.controller('MainCtrl', function($scope) {
     $scope.links = {};
     $scope.do_parsing = {
         data: function () {
+            $scope.input_data = $(".txt-input").val();
+            if ($scope.input_regex === '' || $scope.input_regex === undefined) {
+                $('.repeat').remove();
+            }
             if ($scope.input_regex != '' && $scope.input_data != '' && $scope.langu != '' && $scope.langu != undefined) {
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
