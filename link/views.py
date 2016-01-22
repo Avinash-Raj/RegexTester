@@ -52,15 +52,8 @@ class TestView(TemplateView, RedirectView):
         data = converted_dict['data']
         mod = converted_dict['mod']
         result = RegexParser.parse(regex, data, mod)
-        m = type(result)
-        data_type = ''
-        if m is list:
-            data_type = 'list'
-        else:
-            data_type = 'str'
         context = {
             'items': result,
-            'type': data_type
         }
         return self.render_to_response(context)
 

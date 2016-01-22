@@ -5,25 +5,37 @@ class RegexParser:
     def __init__(self):
         pass
 
+    @staticmethod
+    def __find_iter(regex, data, mod=None):
+        match_list = []
+        reg = regex
+
+        if mod:
+            reg = '(?' + mod + ')' + regex
+
+        print reg, data
+        for i in re.finditer(reg, data):
+            match_list.append((i.group(), i.start()))
+
+        return match_list
+
     @classmethod
     def parse(cls, regex, data, mod):
         try:
+            regex = regex.replace('\\', '\\\\')
+            data = data.replace('\\', '\\\\')
             if mod:
-                formed_regex = ''
                 if 'g' in mod:
                     if len(mod) == 1:
-                        formed_regex = regex
+                        return cls.__find_iter(regex, data)
                     else:
                         mod = mod.replace('g', '')
-                        formed_regex = '(?' + mod + ')' + regex
+                        return cls.__find_iter(regex, data, mod)
                 else:
-                    formed_regex = '(?' + mod + ')' + regex
+                    return cls.__find_iter(regex, data, mod)
 
-                result = re.findall(formed_regex, data)
-                return result
+            return [cls.__find_iter(regex, data)[0]]
 
-            result = re.search(regex, data).group()
-            return result
 
         except:
             return None
