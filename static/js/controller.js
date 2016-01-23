@@ -50,7 +50,10 @@ app.controller('MainCtrl', function($scope) {
                             url: "/test/",
                             data: {"regex":re, "data":data, "mod":mod, "func":func},
            success: function(data) {
-            $('#repeatPython').html(data);
+               var repeat = $(data).filter('div#repeat_py').html();
+               var code = $(data).filter('div#code_py').html();
+            $('#repeatPython').html(repeat);
+               $('#code').html(code);
             }
 });
 

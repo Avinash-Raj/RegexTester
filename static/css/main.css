@@ -48,3 +48,27 @@ margin-left:10px
 height: 218px;
 overflow-y: scroll;
 }
+
+#code_py {
+    background: #eeffcc;
+    margin-top:0; padding-top:0;
+}
+
+#code pre{
+    font-family: monospace, sans-serif;
+    font-size: 96.5%;
+    display: block;
+    padding: 0.5px;
+    margin: 10px 0px 3px;
+    line-height: 1.42857143;
+    color: #249C18;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #d9edf7;
+    border: 1px solid #d9edf7;
+    border-radius: 2px;
+}
+
+#code span {
+  display: inline-block;
+}

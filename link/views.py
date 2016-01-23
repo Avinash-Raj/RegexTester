@@ -52,9 +52,10 @@ class TestView(TemplateView, RedirectView):
         data = converted_dict['data']
         mod = converted_dict['mod']
         func = converted_dict['func']
-        result = RegexParser.parse(regex, data, mod, func)
+        result, code = RegexParser.parse(regex, data, mod, func)
         context = {
             'items': result,
+            'code': code,
         }
         return self.render_to_response(context)
 

@@ -1,11 +1,22 @@
-
 {% if items %}
-<div class="test form-group col-xs-6 repeat" id="repeat_py">
+    <div class="test form-group col-xs-6 repeat" id="repeat_py">
         {% for value, index  in items %}
             <div class="kv col-lg-2">index:
-                        <pre class="num">{{ index }}</pre></div>
+                <pre class="num">{{ index }}</pre>
+            </div>
             <div><span class="kv">value: <pre
-                        class="num">{{ value }}</pre></span></div>
+                    class="num">{{ value }}</pre></span></div>
         {% endfor %}
-</div>
+    </div>
+    <div class="test form-group code" id="code_py">
+    <pre>
+        {% for line  in code %}
+            {% if forloop.last %}
+ <span>{{ line }}</span>
+            {% else %}
+ <span>>>> {{ line }}</span>
+            {% endif %}
+        {% endfor %}
+    </pre>
+    </div>
 {% endif %}

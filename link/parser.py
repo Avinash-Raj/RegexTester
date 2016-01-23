@@ -21,9 +21,13 @@ class RegexParser:
                 regex = '(?' + mod.replace('g', '') + ')' + regex
 
             if func == 'findall':
-                return cls.__find_iter(regex, data)
+                result = cls.__find_iter(regex, data)
+                code = ['import re', 're.findall(' + regex + ', ' + data + ')', str([i[0] for i in result])]
+                return result, code
 
-            return [cls.__find_iter(regex, data)[0]]
+            result = [cls.__find_iter(regex, data)[0]]
+            code = ['import re', "re.search(r'" + regex + "', '" + data + "').group()", str([i[0] for i in result])]
+            return result, code
 
         except:
             return None
