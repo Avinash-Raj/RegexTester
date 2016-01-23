@@ -51,7 +51,8 @@ class TestView(TemplateView, RedirectView):
         regex = converted_dict['regex']
         data = converted_dict['data']
         mod = converted_dict['mod']
-        result = RegexParser.parse(regex, data, mod)
+        func = converted_dict['func']
+        result = RegexParser.parse(regex, data, mod, func)
         context = {
             'items': result,
         }

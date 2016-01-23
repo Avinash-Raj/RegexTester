@@ -8,47 +8,48 @@ app.controller('MainCtrl', function($scope) {
     $scope.input_regex = '';
     $scope.input_data = '';
     $scope.modifier = '';
-    $scope.langu = 'Javascript';
+    $scope.func = 'search';
     $scope.links = {};
     $scope.do_parsing = {
         data: function () {
             $scope.input_data = $(".txt-input").val();
-            if ($scope.input_regex != '' && $scope.input_data != '' && $scope.langu != '' && $scope.langu != undefined) {
+            if ($scope.input_regex != '' && $scope.input_data != '' && $scope.func != '' && $scope.func != undefined) {
                 var re = $scope.input_regex;
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
-                var lang = $scope.langu;
-                //var lang = 'Python';
+                var func = $scope.func;
+                //var lang = $scope.langu;
+                var lang = 'Python';
                 //alert(lang);
                 var dict = {};
-                if (lang === 'Javascript') {
-                try {
-                    var regex = new RegExp(re, mod);
-
-                if(mod.indexOf('g') === -1) {
-                    var m = regex.exec(data);
-                    dict[m.index] = m[0]
-                } else {
-                    while (match = regex.exec(data)) {
-                        if (!match) {
-                            break;
-                        }
-                        dict[match.index] = match[0];
-                    }
-                }
-                return dict;
-            }catch(e) {
-                	return {'0': e.message};
-                }
-
-            }else if (lang === 'Python'){
+            //    if (lang === 'Javascript') {
+            //    try {
+            //        var regex = new RegExp(re, mod);
+            //
+            //    if(mod.indexOf('g') === -1) {
+            //        var m = regex.exec(data);
+            //        dict[m.index] = m[0]
+            //    } else {
+            //        while (match = regex.exec(data)) {
+            //            if (!match) {
+            //                break;
+            //            }
+            //            dict[match.index] = match[0];
+            //        }
+            //    }
+            //    return dict;
+            //}catch(e) {
+            //    	return {'0': e.message};
+            //    }
+            //
+            //}
+            if (lang === 'Python'){
 
                  $.ajax({
                             type: "POST",
                             url: "/test/",
-                            data: {"regex":re, "data":data, "mod":mod},
+                            data: {"regex":re, "data":data, "mod":mod, "func":func},
            success: function(data) {
-            //$( ".test" ).remove();
             $('#repeatPython').html(data);
             }
 });

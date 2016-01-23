@@ -12,9 +12,9 @@
     <div class="container" ng-controller="MainCtrl">
 
         <div class="btn-group btn-toggle" data-toggle="buttons-checkbox">
-                <button type="button" class="btn btn-primary active" id="js" ng-click="langu='Javascript';do_parsing.data()" data-toggle="button">Javascript
+                <button type="button" class="btn btn-primary active" id="js" ng-click="func='search';do_parsing.data()" data-toggle="button">re.search
                 </button>
-            <button type="button" class="btn btn-default" id="py" data-toggle="button" ng-click="langu='Python';do_parsing.data()">Python
+            <button type="button" class="btn btn-default" id="py" data-toggle="button" ng-click="func='findall';do_parsing.data()">re.findall
                 </button>
 
             </div>
@@ -63,7 +63,7 @@
             </div>
             {% endverbatim %}
         </div>
-        <div id="repeatPython" ng-show="langu=='Python'">
+        <div id="repeatPython">
             
         </div>
         </div>

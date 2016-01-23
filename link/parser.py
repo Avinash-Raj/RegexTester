@@ -8,31 +8,22 @@ class RegexParser:
     @staticmethod
     def __find_iter(regex, data, mod=None):
         match_list = []
-        reg = regex
 
-        if mod:
-            reg = '(?' + mod + ')' + regex
-
-        for i in re.finditer(reg, data):
+        for i in re.finditer(regex, data):
             match_list.append((i.group(), i.start()))
 
         return match_list
 
     @classmethod
-    def parse(cls, regex, data, mod):
+    def parse(cls, regex, data, mod, func):
         try:
             if mod:
-                if 'g' in mod:
-                    if len(mod) == 1:
-                        return cls.__find_iter(regex, data)
-                    else:
-                        mod = mod.replace('g', '')
-                        return cls.__find_iter(regex, data, mod)
+                regex = '(?' + mod.replace('g', '') + ')' + regex
 
-                return [cls.__find_iter(regex, data, mod)[0]]
+            if func == 'findall':
+                return cls.__find_iter(regex, data)
 
             return [cls.__find_iter(regex, data)[0]]
-
 
         except:
             return None
