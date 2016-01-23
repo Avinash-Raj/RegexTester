@@ -28,7 +28,7 @@ class RegexParser:
                     else:
                         mod = mod.replace('g', '')
                         return cls.__find_iter(regex, data, mod)
-                
+
                 return [cls.__find_iter(regex, data, mod)[0]]
 
             return [cls.__find_iter(regex, data)[0]]
