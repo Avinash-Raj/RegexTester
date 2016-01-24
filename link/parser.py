@@ -1,5 +1,6 @@
 import re
 import traceback
+from itertools import groupby
 
 
 class RegexParser:
@@ -39,7 +40,7 @@ class RegexParser:
 
         else:
             for match in re.finditer(regex, data):
-                match_list.append((match.group(), match.start()))
+                match_list.append(('', match.group(), match.start()))
 
             return match_list
 
@@ -51,7 +52,7 @@ class RegexParser:
 
             if func == 'findall':
                 result = cls.__find_iter(regex, data)
-                code = ['import re', "re.findall(r'" + regex + "', r'" + data + "')", str([i[0] for i in result])]
+                code = ['import re', "re.findall(r'" + regex + "', r'" + data + "')", str([i[1] for i in result])]
                 if '\n' in data:
                     code = ['import re', "re.findall(r'" + regex + "', r'''" + data + "''')",
                             str([i[0] for i in result])]
@@ -59,7 +60,7 @@ class RegexParser:
                 return result, code
 
             result = cls.__find_iter(regex, data)
-            if len(result[0]) == 3:
+            if len(result[0]) == 3 and result[0] != '':
                 print 'groups found on search'
                 index_list = []
                 output_list = []
@@ -70,7 +71,7 @@ class RegexParser:
 
                 result = output_list
 
-            code = ['import re', "re.search(r'" + regex + "', r'" + data + "').group()", str([i[0] for i in result])]
+            code = ['import re', "re.search(r'" + regex + "', r'" + data + "').group()", str([i[1] for i in result])]
             if '\n' in data:
                 code = ['import re', "re.search(r'" + regex + "', r'''" + data + "''').group()",
                         str([i[0] for i in result])]
@@ -81,3 +82,7 @@ class RegexParser:
             if type(ex).__name__ != 'IndexError':
                 return traceback.format_exc()
             return
+
+    @classmethod
+    def group_by(cls, lst):
+        return {key: [i[1:] for i in group] for key, group in groupby(lst, lambda x: x[0])}

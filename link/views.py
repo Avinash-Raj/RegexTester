@@ -56,12 +56,24 @@ class TestView(TemplateView, RedirectView):
         final_result = RegexParser.parse(regex, data, mod, func)
 
         if isinstance(final_result, tuple):
+
+            if final_result[0][0][0] != '':
+                dict_of_groups = RegexParser.group_by(final_result[0])
+
+                context = {
+                    'group_items': dict_of_groups,
+                    'code': final_result[1],
+                    'count': len(final_result[0])
+                }
+                return self.render_to_response(context)
+
             context = {
-                'items': final_result[0],
-                'code': final_result[1],
-                'count': len(final_result[0])
-            }
+                    'items': final_result[0],
+                    'code': final_result[1],
+                    'count': len(final_result[0])
+                }
             return self.render_to_response(context)
+
         else:
             context = {
                 'traceback': final_result
