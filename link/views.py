@@ -52,12 +52,21 @@ class TestView(TemplateView, RedirectView):
         data = converted_dict['data']
         mod = converted_dict['mod']
         func = converted_dict['func']
-        result, code = RegexParser.parse(regex, data, mod, func)
-        context = {
-            'items': result,
-            'code': code,
-        }
-        return self.render_to_response(context)
+
+        final_result = RegexParser.parse(regex, data, mod, func)
+
+        if isinstance(final_result, tuple):
+            context = {
+                'items': final_result[0],
+                'code': final_result[1],
+                'count': len(final_result[0])
+            }
+            return self.render_to_response(context)
+        else:
+            context = {
+                'traceback': final_result
+            }
+            return self.render_to_response(context)
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
 

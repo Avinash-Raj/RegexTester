@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Regex Tester{% endblock %}
+{% block title %}PyRegex Tester{% endblock %}
 
 {% block description %}This page is an awesome home page.{% endblock %}
 
@@ -29,10 +29,11 @@
 
             </div>
             <div class="col-lg-2">
-                <input type="text" name="modifier" id="mod" class="form-control" placeholder="modifier"
+                <input type="text" name="modifier" id="mod" class="form-control" placeholder="ism"
                        ng-model="modifier"
                        ng-model-options="{ getterSetter: true }">
             </div>
+            <div class="results col-lg-1">0 matches</div>
 
 
         </div>
@@ -63,6 +64,7 @@
             </div>
             {% endverbatim %}
         </div>
+
         <div id="repeatPython">
             
         </div>

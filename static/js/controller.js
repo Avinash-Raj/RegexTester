@@ -4,7 +4,7 @@
 
 var app = angular.module('regex_tester', []);
 
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', function ($scope) {
     $scope.input_regex = '';
     $scope.input_data = '';
     $scope.modifier = '';
@@ -21,57 +21,44 @@ app.controller('MainCtrl', function($scope) {
                 //var lang = $scope.langu;
                 var lang = 'Python';
                 //alert(lang);
-                var dict = {};
-            //    if (lang === 'Javascript') {
-            //    try {
-            //        var regex = new RegExp(re, mod);
-            //
-            //    if(mod.indexOf('g') === -1) {
-            //        var m = regex.exec(data);
-            //        dict[m.index] = m[0]
-            //    } else {
-            //        while (match = regex.exec(data)) {
-            //            if (!match) {
-            //                break;
-            //            }
-            //            dict[match.index] = match[0];
-            //        }
-            //    }
-            //    return dict;
-            //}catch(e) {
-            //    	return {'0': e.message};
-            //    }
-            //
-            //}
-            if (lang === 'Python'){
 
-                 $.ajax({
-                            type: "POST",
-                            url: "/test/",
-                            data: {"regex":re, "data":data, "mod":mod, "func":func},
-           success: function(data) {
-               var repeat = $(data).filter('div#repeat_py').html();
-               var code = $(data).filter('div#code_py').html();
-            $('#repeatPython').html(repeat);
-               $('#code').html(code);
-            }
-});
+                if (lang === 'Python') {
 
-            }
+                    $.ajax({
+                        type: "POST",
+                        url: "/test/",
+                        data: {"regex": re, "data": data, "mod": mod, "func": func},
+                        success: function (data) {
+                            var repeat = $(data).filter('div#repeat_py').html();
+                            var code = $(data).filter('div#code_py').html();
+                            var count = $(data).filter('div#count').text();
+                            var traceback = $(data).filter('.traceback').html();
+                            if (traceback !== '' && traceback !== undefined) {
+                                if (/<pre>\s*(None)?\s*<\/pre>/.test(traceback)){
+                                    $('div.results').text('No match');
+                                }else {
+                                    $('div.results').text('error');
+                                    $('#code').html(traceback);
+                                }
+                                $('#repeatPython').html('');
+
+                            }
+                            else{
+                                if (count == 1) {
+                                    $('div.results').text('1 match');
+                                }else {
+                                    $('div.results').text(count + ' matches');
+                                }
+                                $('#repeatPython').html(repeat);
+                                $('#code').html(code);
+                            }
+                        }
+                    });
+
+                }
             }
 
         }
     };
-
-//   Link.query(function(response) {
-//    $scope.tweets = response;
-//  });
-//
-//  $scope.submitLink = function(input_regex,modifier,input_data) {
-//    var link = new Link({regex: input_regex, modifier: modifier, data: input_data});
-//    link.$save(function(){
-//      $scope.links.unshift(link);
-//    })
-//  };
 
 });
