@@ -36,6 +36,7 @@ app.controller('MainCtrl', function ($scope) {
                             if (traceback !== '' && traceback !== undefined) {
                                 if (/<pre>\s*(None)?\s*<\/pre>/.test(traceback)){
                                     $('div.results').text('No match');
+                                    $('#code').html('');
                                 }else {
                                     $('div.results').text('error');
                                     $('#code').html(traceback);
