@@ -75,8 +75,8 @@ class RegexParser:
 
                 result = output_list
                 print result
-                code = ['import re', "match_obj = re.search(r'" + regex + "', r'''" + data + "''')", "match_obj.group()",
-                        str(result[0][1]), "match_obj.groups()", str([i[1] for i in result[1:]])]
+                code = ['import re', "match_obj = re.search(r'" + regex + "', r'''" + data + "''')", "match_obj.group(), match_obj.groups()",
+                        str(result[0][1]) + ', ' + str([i[1] for i in result[1:]])]
 
             return result, code
 
