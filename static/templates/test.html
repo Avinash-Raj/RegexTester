@@ -20,9 +20,9 @@
 
 {% if items %}
     <div class="test form-group col-xs-6 repeat" id="repeat_py">
-        {% for value, index  in items %}
+        {% for index, value, pos  in items %}
             <div class="kv col-lg-2">Index:
-                <pre class="num">{{ index }}</pre>
+                <pre class="num">{{ pos }}</pre>
             </div>
             <div><span class="kv">Value: <pre
                     class="num">{{ value }}</pre></span></div>
@@ -32,10 +32,15 @@
 
 
 {% elif group_items %}
+    Inside group items {{ group_items.items }}
     <div class="test form-group col-xs-6 repeat" id="group_py">
-    {% for key, values in data.items %}
+    {% for key, values in group_items.items %}
 <div class="group">
-    <div class="key">{{ key }}</div>
+{% if forloop.first %}
+    <div class="key">Match {{ key }}</div>
+{% else %}
+<div class="key">Group {{ key }}</div>
+{% endif %}
     {% for item, pos in values %}
     <div class="kv col-lg-2">Index:
                 <pre class="num">{{ pos }}</pre>

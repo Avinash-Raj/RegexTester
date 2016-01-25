@@ -55,13 +55,17 @@ class RegexParser:
                 code = ['import re', "re.findall(r'" + regex + "', r'" + data + "')", str([i[1] for i in result])]
                 if '\n' in data:
                     code = ['import re', "re.findall(r'" + regex + "', r'''" + data + "''')",
-                            str([i[0] for i in result])]
+                            str([i[1] for i in result])]
 
                 return result, code
 
             result = cls.__find_iter(regex, data)
-            if len(result[0]) == 3 and result[0] != '':
-                print 'groups found on search'
+            code = ['import re', "re.search(r'" + regex + "', r'" + data + "').group()", str([i[1] for i in result])]
+            if '\n' in data:
+                code = ['import re', "re.search(r'" + regex + "', r'''" + data + "''').group()",
+                        str([i[1] for i in result])]
+
+            if len(result[0]) == 3 and result[0][0] != '':
                 index_list = []
                 output_list = []
                 for item in result:
@@ -70,16 +74,14 @@ class RegexParser:
                         output_list.append(item)
 
                 result = output_list
-
-            code = ['import re', "re.search(r'" + regex + "', r'" + data + "').group()", str([i[1] for i in result])]
-            if '\n' in data:
-                code = ['import re', "re.search(r'" + regex + "', r'''" + data + "''').group()",
-                        str([i[0] for i in result])]
+                print result
+                code = ['import re', "match_obj = re.search(r'" + regex + "', r'''" + data + "''')", "match_obj.group()",
+                        str(result[0][1]), "match_obj.groups()", str([i[1] for i in result[1:]])]
 
             return result, code
 
         except Exception as ex:
-            if type(ex).__name__ != 'IndexError':
+            if type(ex).__name__ != 'IndexError' and type(ex).__name__ != 'StopIteration':
                 return traceback.format_exc()
             return
 

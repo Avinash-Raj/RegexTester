@@ -59,7 +59,6 @@ class TestView(TemplateView, RedirectView):
 
             if final_result[0][0][0] != '':
                 dict_of_groups = RegexParser.group_by(final_result[0])
-
                 context = {
                     'group_items': dict_of_groups,
                     'code': final_result[1],
