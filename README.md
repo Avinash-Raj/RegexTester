@@ -1,6 +1,6 @@
 # RegexTester
 =============
-RegexTester is an online Regular Expression tester. Currenty it supports Javascript only.
+RegexTester is an online Regular Expression tester. Currenty it supports Python only.
 
 ### Requirements
 
