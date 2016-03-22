@@ -103,3 +103,15 @@ pre {
     cursor: default;
     z-index: 3;
 }
+
+.group .key {
+    color: #ff7820;
+    font-weight: 600;
+}
+
+.num {
+    color: #105cb6;
+    font-weight: 600;
+    font-style: inherit;
+    font-size: 16px;
+}
