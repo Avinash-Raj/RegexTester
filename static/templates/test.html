@@ -1,14 +1,4 @@
-{% if items %}
-    <div class="test form-group col-xs-6 repeat" id="repeat_py">
-        {% for value, index  in items %}
-            <div class="kv col-lg-2">Index:
-                <pre class="num">{{ index }}</pre>
-            </div>
-            <div><span class="kv">Value: <pre
-                    class="num">{{ value }}</pre></span></div>
-        {% endfor %}
-    </div>
-
+{% if items or group_items %}
     <div class="test form-group code" id="code_py">
     <div class="highlight">
 
@@ -21,7 +11,46 @@
         {% endfor %}
     </div>
     </div>
+
     <div id="count">{{ count }}</div>
+{% endif %}
+
+
+
+
+{% if items %}
+    <div class="test form-group col-xs-6 repeat" id="repeat_py">
+        {% for index, value, pos  in items %}
+            <div class="kv col-lg-2">Index:
+                <pre class="num">{{ pos }}</pre>
+            </div>
+            <div><span class="kv">Value: <pre
+                    class="num">{{ value }}</pre></span></div>
+        {% endfor %}
+    </div>
+
+
+
+{% elif group_items %}
+    Inside group items {{ group_items.items }}
+    <div class="test form-group col-xs-6 repeat" id="group_py">
+    {% for key, values in group_items.items %}
+<div class="group">
+{% if forloop.first %}
+    <div class="key">Match {{ key }}</div>
+{% else %}
+<div class="key">Group {{ key }}</div>
+{% endif %}
+    {% for item, pos in values %}
+    <div class="kv col-lg-2">Index:
+                <pre class="num">{{ pos }}</pre>
+            </div>
+            <div><span class="kv">Value: <pre
+                    class="num">{{ item }}</pre></span></div>
+    {% endfor %}
+</div>
+    {% endfor %}
+    </div>
 {% else %}
     <div class="traceback">
 <pre>{{ traceback }}</pre>

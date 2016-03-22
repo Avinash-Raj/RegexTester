@@ -30,12 +30,14 @@ app.controller('MainCtrl', function ($scope) {
                         data: {"regex": re, "data": data, "mod": mod, "func": func},
                         success: function (data) {
                             var repeat = $(data).filter('div#repeat_py').html();
+                            var repeat_group = $(data).filter('div#group_py').html();
                             var code = $(data).filter('div#code_py').html();
                             var count = $(data).filter('div#count').text();
                             var traceback = $(data).filter('.traceback').html();
                             if (traceback !== '' && traceback !== undefined) {
                                 if (/<pre>\s*(None)?\s*<\/pre>/.test(traceback)){
                                     $('div.results').text('No match');
+                                    $('#code').html('');
                                 }else {
                                     $('div.results').text('error');
                                     $('#code').html(traceback);
@@ -49,9 +51,15 @@ app.controller('MainCtrl', function ($scope) {
                                 }else {
                                     $('div.results').text(count + ' matches');
                                 }
-                                $('#repeatPython').html(repeat);
+                                if(repeat !== '' && repeat !== undefined) {
+                                    $('#repeatPython').html(repeat);
+                                }else{
+                                    $('#repeatPython').html(repeat_group);
+                                }
+
                                 $('#code').html(code);
                             }
+
                         }
                     });
 
