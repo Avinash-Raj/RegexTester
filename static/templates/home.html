@@ -11,10 +11,10 @@
     {% verbatim %}
     <div class="container" ng-controller="MainCtrl">
 
-        <div class="btn-group btn-toggle" data-toggle="buttons-checkbox">
-                <button type="button" class="btn btn-primary active" id="js" ng-click="func='search';do_parsing.data()" data-toggle="button">re.search
+        <div class="btn-group">
+                <button type="button" class="btn btn-primary active" id="js" ng-show = "searchVisible=true" ng-click="func='search';do_parsing.data()">re.search
                 </button>
-            <button type="button" class="btn btn-default" id="py" data-toggle="button" ng-click="func='findall';do_parsing.data()">re.findall
+            <button type="button" class="btn btn-default" id="py" ng-show = "findallVisible=true" ng-click="func='findall';do_parsing.data()">re.findall
                 </button>
 
             </div>

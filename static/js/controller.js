@@ -18,6 +18,18 @@ app.controller('MainCtrl', function ($scope) {
                 var data = $scope.input_data;
                 var mod = $scope.modifier;
                 var func = $scope.func;
+
+                if (func == 'search'){
+                    alert('on search')
+                    $scope.searchVisible = true;
+                    $scope.findallVisible = false;
+                }else if (func == 'findall'){
+                   $scope.searchVisible = false;
+                    $scope.findallVisible = true;
+                }else{
+                   $scope.searchVisible = true;
+                $scope.findallVisible = true; 
+                }
                 //var lang = $scope.langu;
                 var lang = 'Python';
                 //alert(lang);
